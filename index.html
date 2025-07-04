@@ -1,0 +1,210 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>landingpage</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    
+    </head>
+    <body>
+        <header>
+            <h1>CoinFlow</h1>
+            
+            
+            <nav>
+                <a href="#liverates">Cotação</a>
+                <a href="#conversor">Conversor</a>
+                <a href="#grafico">Gráfico</a>
+                <a href="#contato">Contato</a>
+
+            </nav>
+        </header>
+        <section class="hero">
+            <h2>Acompanhe o valor do seu dinheiro em tempo real e esteja sempre à frente!</h2>
+            <p>CoinFlow é uma landing page interativa que oferece aos usuários uma visão objetiva e atualizada sobre o mercado de câmbio.</p>
+
+        </section>
+        
+        <section class="liverates" id="liverates">
+            <h3>Cotação ao vivo</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Moeda em relação ao real</th>
+                        <th>Valor</th>
+                        <th>Variação Cambial</th>
+                    </tr>
+                </thead>
+                <tbody id="rates-body"> 
+                    <tr>
+                        <td>USD - dólar americano</td>
+                        <td id="usd-price">-</td>
+                        <td id="usd-change" class="changer"></td>
+                    </tr>
+
+                    <tr>
+                        <td>GBP - libra</td>
+                        <td id="gbp-price">-</td>
+                        <td id="gbp-change" class="changer"></td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td>Euro</td>
+                        <td id="eur-price">-</td>
+                        <td id="eur-change" class="changer"></td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td>Peso argentino</td>
+                        <td id="ars-price">-</td>
+                        <td id="ars-change" class="changer"></td>
+                    </tr>
+
+
+            
+                    <tr>
+                        <td>Peso chileno</td>
+                        <td id="clp-price">-</td>
+                        <td id="clp-change" class="changer"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Iene</td>
+                        <td id="jpy-price">-</td>
+                        <td id="jpy-change" class="changer"></td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+
+        </section>
+        <section class="conversor" id="conversor">
+            <div class="container">
+                <h1>Conversor de Moedas</h1>
+
+                <form id="converterForm" class="converterForm">
+
+                    <div class="currency-row">
+                        <div class="valor">
+                            <label for="amount">Valor</label>
+                            <input type="number" id="amount" placeholder="Valor" step="1" min="0" required>
+            
+
+                        </div>
+                        <div class="select">
+
+                            
+                            <label for="fromCurrency">Converter de</label>
+                            <select id="fromCurrency" required>
+                                <option value="USD">USD - DÓLAR</option>
+                                <option value="BRL" selected>REAL - BRL</option>
+                                <option value="GBP">GBP - LIBRA</option>
+                                <option value="EUR">EUR - EURO</option>
+                                <option value="ARS">ARS - PESO ARGENTINO</option>
+                                <option value="CLP">CLP - PESO CHILENO</option>
+                                <option value="JPY">JPY - IENE</option>
+                            </select>
+                        </div>
+
+
+
+
+
+                        <div class="select">
+
+                            
+                            <label for="toCurrency">Para a moeda</label>
+                            <select id="toCurrency" required>
+                                <option value="USD" selected>USD - DÓLAR</option>
+                                <option value="BRL">REAL - BRL</option>
+                                <option value="GBP">GBP - LIBRA</option>
+                                <option value="EUR">EUR - EURO</option>
+                                <option value="ARS">ARS - PESO ARGENTINO</option>
+                                <option value="CLP">CLP - PESO CHILENO</option>
+                                <option value="JPY">JPY - IENE</option>
+                            </select>
+
+
+                        
+
+                        </div>
+
+                        <div class="resultado">
+                            <label for="convertedamount">Resultado</label>
+                            <input type="text" readonly id="convertedamount" placeholder="Resultado" >
+                
+                        </div>
+
+                    
+
+                    </div>
+
+                    
+                    <button type="submit" class="converterbtn" id="converterbtn">
+                        Converter moeda
+
+                    </button>
+                </form>
+                <div class="loading">
+
+                    <div class="spinner">
+                    
+
+                    </div>
+                    <p>Buscando cotação..</p>
+
+                </div>
+                <div class="error">
+
+                </div>
+
+            
+
+
+            </div>
+            <div class="cta">
+            <p>Variação das moedas em relação ao real, acompanhe o histórico em forma de gráfico:</p>
+            </div>
+            
+        </section>
+        <section class="grafico" id="grafico">
+            <h3>Histórico dos últimos 7 dias</h3>
+            <label for="moedaSelect">Escolha a moeda:</label>
+            <select id="moedaSelect">
+                <option value="USD-BRL">Dólar (USD)</option>
+                <option value="EUR-BRL">Euro (EUR)</option>
+                <option value="GBP-BRL">Libra Esterlina (GBP)</option>
+                <option value="ARS-BRL">Peso Argentino (ARS)</option>
+                <option value="CLP-BRL">CLP - PESO CHILENO</option>
+                <option value="JPY-BRL">JPY - IENE</option>
+            </select>
+            
+            <canvas id="moedaChart" width="600" height="400"></canvas>
+           
+        </section>
+        <section class="ending">
+            <h3>Entre em contato! 
+            </h3>
+            <nav class="contato" id="contato">
+                <a href="https://www.linkedin.com/in/emily-fontana-55465a24a/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin"></i> Linkedin
+                </a>
+                <a href="mailto:emilypfontana@gmail.com">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+                <a href="https://github.com/emilyfontana" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github"></i> Github
+                </a>
+            </nav>
+
+        </section>
+
+
+    <script src="script.js"></script>
+    </body>
+</html>                 
